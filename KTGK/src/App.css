@@ -29,6 +29,8 @@
   --bar-lang: #5fd0a8;
   --shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
   --toast-shadow: 0 12px 32px rgba(16, 24, 40, 0.14);
+  --cover-stage: #f1f3f7;
+  --cover-shadow: 0 6px 14px rgba(16, 24, 40, 0.18), 0 1px 2px rgba(16, 24, 40, 0.12);
   --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
 
   min-height: 100svh;
@@ -65,6 +67,8 @@
   --badge-lang-text: #86e3c1;
   --shadow: none;
   --toast-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --cover-stage: #12141a;
+  --cover-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
   color-scheme: dark;
 }
 
@@ -364,6 +368,88 @@
   list-style: none;
 }
 
+.cover-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 148px;
+  margin: -14px -14px 14px;
+  border-radius: 11px 11px 0 0;
+  border-bottom: 1px solid var(--border);
+  background: var(--cover-stage);
+}
+
+.cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 88px;
+  height: 120px;
+  padding: 12px 8px 8px 16px;
+  overflow: hidden;
+  border-radius: 3px 6px 6px 3px;
+  background: linear-gradient(150deg, var(--cover-a), var(--cover-b));
+  box-shadow: var(--cover-shadow);
+  color: #ffffff;
+  transition: transform 0.2s ease;
+}
+
+.book-card:hover .cover {
+  transform: translateY(-3px) rotate(-1deg);
+}
+
+.cover__spine {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 7px;
+  background: rgba(0, 0, 0, 0.22);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.18);
+}
+
+.cover__rule {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.cover__title {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.cover__brand {
+  margin-top: auto;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.cover--it.cover--v0 { --cover-a: #4c6ef5; --cover-b: #2a3f9e; }
+.cover--it.cover--v1 { --cover-a: #3b82f6; --cover-b: #1e3a8a; }
+.cover--it.cover--v2 { --cover-a: #6366f1; --cover-b: #3730a3; }
+.cover--econ.cover--v0 { --cover-a: #f59f45; --cover-b: #b4531a; }
+.cover--econ.cover--v1 { --cover-a: #e8704a; --cover-b: #9c3b1c; }
+.cover--econ.cover--v2 { --cover-a: #d9a03b; --cover-b: #8f5a12; }
+.cover--lang.cover--v0 { --cover-a: #2bb488; --cover-b: #0f6a4c; }
+.cover--lang.cover--v1 { --cover-a: #14a3a8; --cover-b: #0c5f66; }
+.cover--lang.cover--v2 { --cover-a: #4fb85f; --cover-b: #23733a; }
+
+.book-card--out .cover {
+  filter: grayscale(0.7);
+  opacity: 0.75;
+}
+
 .book-card {
   display: flex;
   flex-direction: column;
@@ -631,6 +717,12 @@
   border-radius: 6px;
   background: var(--skeleton);
   animation: pulse 1.4s ease-in-out infinite;
+}
+
+.sk--cover {
+  height: 148px;
+  margin: -14px -14px 14px;
+  border-radius: 11px 11px 0 0;
 }
 
 .sk--badge {

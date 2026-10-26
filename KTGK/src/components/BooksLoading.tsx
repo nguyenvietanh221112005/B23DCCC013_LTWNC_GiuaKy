@@ -12,6 +12,7 @@ export function BooksLoading() {
       <ul className="book-grid book-grid--wide" aria-hidden="true">
         {SKELETON_IDS.map((id) => (
           <li key={id} className="card book-card skeleton-card">
+            <span className="sk sk--cover" />
             <div className="book-card__top">
               <span className="sk sk--badge" />
               <span className="sk sk--year" />

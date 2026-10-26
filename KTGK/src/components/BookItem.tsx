@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import type { Book } from '../types/book';
+import { BookCover } from './BookCover';
 import { CategoryBadge } from './CategoryBadge';
 
 export interface BookItemProps {
@@ -12,7 +13,8 @@ function BookItemComponent({ book, isBorrowed, onBorrow }: BookItemProps) {
   const isOutOfStock = book.available <= 0;
 
   return (
-    <li className="card book-card">
+    <li className={`card book-card${isOutOfStock ? ' book-card--out' : ''}`}>
+      <BookCover book={book} />
       <div className="book-card__top">
         <CategoryBadge category={book.category} />
         <span className="book-card__year mono">{book.year}</span>
